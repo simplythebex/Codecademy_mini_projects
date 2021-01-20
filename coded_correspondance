@@ -1,0 +1,32 @@
+# decodes messages that have been coded using Caesar Cipher, offset 10. (Each letter has been shifted -10 letters in the alphabet)
+
+message = "xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"
+
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+punctuation=".,!? "
+translated_message = ""
+for letter in message:
+    if not letter in punctuation:
+        letter_value = alphabet.find(letter)
+        letter_value += 10 
+        decoded_letter = alphabet[letter_value % 26]
+        translated_message += decoded_letter
+    else:
+        translated_message += letter
+print(translated_message)
+        
+# codes a message into Caesar Cipher, offset 10.
+message_2 = "i am coding this!"
+
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+punctuation=".,!? "
+coded_message = ""
+for letter in message_2:
+    if not letter in punctuation:
+        letter_value = alphabet.find(letter)
+        letter_value -=10
+        coded_letter = alphabet[letter_value]
+        coded_message += coded_letter
+    else:
+        coded_message += letter
+print(coded_message)
