@@ -54,3 +54,23 @@ def vigenere_decoder(message, keyword):
         else:
             decoded_message += message[i]
     return decoded_message
+    
+    def encode_vigenere(message, keyword):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    punctuation = ".,!? "
+    keyword_phrase = ""
+    count = 0
+    for i in range(len(message)):
+        if message[i] in punctuation:
+            keyword_phrase += message[i]
+        else:
+            keyword_phrase += keyword[count]
+            count = (count +1) % len(keyword)
+    coded_message = ""
+    for i in range(len(message)):
+        if not message[i] in punctuation:
+            index_value = alphabet.find(message[i]) + alphabet.find(keyword_phrase[i]) 
+            coded_message += alphabet[index_value % 26]
+        else:
+            coded_message += message[i]
+    return coded_message
