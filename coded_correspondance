@@ -33,3 +33,24 @@ def decode_unknown_offset(message):
     for i in range(1, 26):
         print("offset: " + str(i))
         print("\t" + decoder(message, i) + "\n")
+        
+# decodes Vigenere Ciphers from a message and keyword
+def vigenere_decoder(message, keyword):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    punctuation = ".,!? "
+    keyword_phrase = ""
+    count = 0
+    for i in range(0, len(message)):
+        if message[i] in punctuation:
+            keyword_phrase += message[i]
+        else:
+            keyword_phrase += keyword[count]
+            count = (count + 1) % len(keyword)
+    decoded_message = ""
+    for i in range(0, len(message)):
+        if not message[i] in punctuation:
+            index_value = alphabet.find(message[i]) + alphabet.find(keyword_phrase[i])
+            decoded_message += alphabet[index_value % 26]
+        else:
+            decoded_message += message[i]
+    return decoded_message
