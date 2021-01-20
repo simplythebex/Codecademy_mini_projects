@@ -49,7 +49,7 @@ def vigenere_decoder(message, keyword):
     decoded_message = ""
     for i in range(0, len(message)):
         if not message[i] in punctuation:
-            index_value = alphabet.find(message[i]) + alphabet.find(keyword_phrase[i])
+            index_value = alphabet.find(message[i]) - alphabet.find(keyword_phrase[i])
             decoded_message += alphabet[index_value % 26]
         else:
             decoded_message += message[i]
