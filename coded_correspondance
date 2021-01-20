@@ -1,32 +1,27 @@
-# decodes messages that have been coded using Caesar Cipher, offset 10. (Each letter has been shifted -10 letters in the alphabet)
+# decodes messages that have been coded using Caesar Cipher. (Each letter will be shifted along the alphabet by the value of the offest)
 
-message = "xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"
-
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-punctuation=".,!? "
-translated_message = ""
-for letter in message:
-    if not letter in punctuation:
-        letter_value = alphabet.find(letter)
-        letter_value += 10 
-        decoded_letter = alphabet[letter_value % 26]
-        translated_message += decoded_letter
-    else:
-        translated_message += letter
-print(translated_message)
+def decoder(message, offset):
+    decoded_message = ""
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    punctuation = ".,?! "
+    for letter in message:
+        if not letter in punctuation:
+            letter_value = alphabet.find(letter) + offset
+            decoded_message += alphabet[letter_value % 26]
+        else:
+            decoded_message += letter
+    return decoded_message
         
-# codes a message into Caesar Cipher, offset 10.
-message_2 = "i am coding this!"
+# codes a message into Caesar Cipher, must be given the offset.
 
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-punctuation=".,!? "
-coded_message = ""
-for letter in message_2:
-    if not letter in punctuation:
-        letter_value = alphabet.find(letter)
-        letter_value -=10
-        coded_letter = alphabet[letter_value]
-        coded_message += coded_letter
-    else:
-        coded_message += letter
-print(coded_message)
+def coder(message, offset):
+    coded_message = ""
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    punctuation = ".,?! "
+    for letter in message:
+        if not letter in punctuation:
+            letter_value = alphabet.find(letter)
+            coded_message += alphabet[(letter_value - offset) % 26]
+        else:
+            coded_message += letter
+    return coded_message
