@@ -1,5 +1,4 @@
 # decodes messages that have been coded using Caesar Cipher. (Each letter will be shifted along the alphabet by the value of the offest)
-
 def decoder(message, offset):
     decoded_message = ""
     alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -11,9 +10,10 @@ def decoder(message, offset):
         else:
             decoded_message += letter
     return decoded_message
+    
+    
         
 # codes a message into Caesar Cipher, must be given the offset.
-
 def coder(message, offset):
     coded_message = ""
     alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -25,3 +25,11 @@ def coder(message, offset):
         else:
             coded_message += letter
     return coded_message
+    
+    
+
+#decodes messages without knowing the offset
+def decode_unknown_offset(message):
+    for i in range(1, 26):
+        print("offset: " + str(i))
+        print("\t" + decoder(message, i) + "\n")
