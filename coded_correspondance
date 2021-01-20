@@ -55,6 +55,7 @@ def vigenere_decoder(message, keyword):
             decoded_message += message[i]
     return decoded_message
     
+# encodes messages using Vignere Ciphers
     def encode_vigenere(message, keyword):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     punctuation = ".,!? "
